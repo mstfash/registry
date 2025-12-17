@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://github.com/anthropics/acp-registry/agent.schema.json",
+  "$id": "https://github.com/agentclientprotocol/registry/agent.schema.json",
   "title": "ACP Agent",
   "description": "Schema for ACP agent registry entries",
   "type": "object",

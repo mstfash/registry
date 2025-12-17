@@ -7,14 +7,14 @@ on:
       - '*/agent.json'
       - '*/icon.svg'
       - '.github/workflows/**'
-      - 'agent.schema.json'
+      - '*.schema.json'
   pull_request:
     branches: [main]
     paths:
       - '*/agent.json'
       - '*/icon.svg'
       - '.github/workflows/**'
-      - 'agent.schema.json'
+      - '*.schema.json'
   workflow_dispatch:
 
 jobs:

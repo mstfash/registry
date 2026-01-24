@@ -24,7 +24,7 @@ A registry of agents and extensions implementing the [Agent Client Protocol, ACP
 Fetch the registry index:
 
 ```
-https://github.com/agentclientprotocol/registry/releases/latest/download/registry.json
+https://cdn.agentclientprotocol.com/registry/v1/latest/registry.json
 ```
 
 ## Documentation Site

@@ -41,9 +41,7 @@ VALID_PLATFORMS = {
 }
 
 # Can be overridden via environment variable
-DEFAULT_BASE_URL = (
-    "https://github.com/agentclientprotocol/registry/releases/latest/download"
-)
+DEFAULT_BASE_URL = "https://cdn.agentclientprotocol.com/registry/v1/latest"
 
 # Icon requirements
 PREFERRED_ICON_SIZE = 16

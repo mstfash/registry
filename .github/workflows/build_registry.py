@@ -586,6 +586,18 @@ def build_registry():
         json.dump(registry, f, indent=2)
         f.write("\n")
 
+    # Write registry-for-jetbrains.json (without codex)
+    JETBRAINS_EXCLUDE_IDS = {"codex-acp"}
+    jetbrains_registry = {
+        "version": REGISTRY_VERSION,
+        "agents": [a for a in agents if a["id"] not in JETBRAINS_EXCLUDE_IDS],
+        "extensions": extensions,
+    }
+    jetbrains_output_path = dist_dir / "registry-for-jetbrains.json"
+    with open(jetbrains_output_path, "w") as f:
+        json.dump(jetbrains_registry, f, indent=2)
+        f.write("\n")
+
     # Copy icons to dist (for both agents and extensions)
     for entry in agents + extensions:
         entry_id = entry["id"]
@@ -601,7 +613,10 @@ def build_registry():
             schema_dst = dist_dir / schema_file
             schema_dst.write_bytes(schema_src.read_bytes())
 
+    jetbrains_agent_count = len(jetbrains_registry["agents"])
     print(f"\nBuilt dist/ with {len(agents)} agents and {len(extensions)} extensions")
+    print(f"  registry.json: {len(agents)} agents")
+    print(f"  registry-for-jetbrains.json: {jetbrains_agent_count} agents (excluded: {', '.join(JETBRAINS_EXCLUDE_IDS)})")
 
 
 if __name__ == "__main__":

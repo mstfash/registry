@@ -63,11 +63,14 @@ jobs:
         run: |
           VERSION="v$(date +%Y.%m.%d)-$(git rev-parse --short HEAD)"
 
-          # Create versioned release
+          # Create versioned release (exclude registry-for-jetbrains.json)
           gh release create "$VERSION" \
             --title "Registry $VERSION" \
             --notes "Auto-generated registry index" \
-            dist/*
+            dist/registry.json \
+            dist/agent.schema.json \
+            dist/registry.schema.json \
+            dist/*.svg
 
           # Delete old 'latest' tag and release
           gh release delete latest --yes --cleanup-tag || true

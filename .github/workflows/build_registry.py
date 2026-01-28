@@ -586,8 +586,8 @@ def build_registry():
         json.dump(registry, f, indent=2)
         f.write("\n")
 
-    # Write registry-for-jetbrains.json (without codex)
-    JETBRAINS_EXCLUDE_IDS = {"codex-acp"}
+    # Write registry-for-jetbrains.json (without codex and claude-code)
+    JETBRAINS_EXCLUDE_IDS = {"codex-acp", "claude-code-acp"}
     jetbrains_registry = {
         "version": REGISTRY_VERSION,
         "agents": [a for a in agents if a["id"] not in JETBRAINS_EXCLUDE_IDS],

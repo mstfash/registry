@@ -266,6 +266,13 @@ def validate_icon_monochrome(content: str) -> list[str]:
                 )
                 reported_colors.add(style_stroke.group(1).strip())
 
+    # Check that currentColor is actually used (icons without fill default to black)
+    has_current_color = bool(re.search(r'currentColor', content, re.IGNORECASE))
+    if not has_current_color:
+        errors.append(
+            'Icon must use currentColor for fills/strokes to support theming'
+        )
+
     # Deduplicate errors
     return list(dict.fromkeys(errors))
 
